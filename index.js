@@ -1,6 +1,21 @@
 #!/usr/bin/env node
 "use strict";
 
+// --- RENDER FREE PORT BYPASS ---
+const express = require('express');
+const app = express();
+const PORT = process.env.PORT || 10000;
+
+app.get('/', (req, res) => {
+	res.send('Steam Hour Farmer is active and running on Render!');
+});
+
+app.listen(PORT, '0.0.0.0', () => {
+	console.log(`Port scanner bypass active: listening on port ${PORT}`);
+});
+// -------------------------------
+
+// Original steam-hour-farmer logic follows
 const readline = require("readline");
 const util = require("util");
 const Steam = require("steam-user");
